@@ -1,0 +1,15 @@
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Address {
+  id        Int      @id @default(autoincrement()) 
+  address   String   @unique                      
+  lng       Float                                  
+  lat       Float                                  
+  createdAt DateTime @default(now())               
+
+  @@unique([lng, lat])
+}
